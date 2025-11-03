@@ -8,13 +8,13 @@ mv -f "$MODPATH/detach-${ARCH}" "$MODPATH/detach"
 rm "$MODPATH"/detach-*
 chmod +x "$MODPATH/detach"
 
-mkdir -p /data/adb/zygisk-detach/
+mkdir -p /data/adb/zygisk_detach/
 
-DBIN="/data/adb/zygisk-detach/detach.bin"
+DBIN="/data/adb/zygisk_detach/detach.bin"
 
 # preserve detach.bin for older versions
-if [ -f "/data/adb/modules/zygisk-detach/detach.bin" ]; then
-	cp -f "/data/adb/modules/zygisk-detach/detach.bin" $DBIN
+if [ -f "/data/adb/modules/zygisk_detach/detach.bin" ]; then
+	cp -f "/data/adb/modules/zygisk_detach/detach.bin" $DBIN
 fi
 
 if [ -f "$MODPATH/detach.txt" ]; then
@@ -28,7 +28,7 @@ fi
 
 CLIPATH=/data/data/com.termux/files/usr/bin/
 if [ -d $CLIPATH ]; then
-	echo "su -c /data/adb/modules/zygisk-detach/detach" >$CLIPATH/detach
+	echo "su -c /data/adb/modules/zygisk_detach/detach" >$CLIPATH/detach
 	chmod 777 $CLIPATH/detach
 	ui_print "- Run 'detach' in termux after the reboot"
 else

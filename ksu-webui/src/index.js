@@ -4,7 +4,7 @@ const template = document.getElementById('app-template').content;
 const appsList = document.getElementById('apps-list');
 
 async function run(cmd) {
-	const LOG_DIR = "/sdcard/zygisk-detach.log";
+	const LOG_DIR = "/sdcard/zygisk_detach.log";
 	const { errno, stdout, stderr } = await exec(cmd);
 	if (errno != 0) {
 		toast(`Command '${cmd}' fail.`)
@@ -56,7 +56,7 @@ async function main() {
 	const pkgs = await run("pm list packages");
 	if (pkgs === undefined) return;
 
-	const detached_list_out = await run("/data/adb/modules/zygisk-detach/detach list");
+	const detached_list_out = await run("/data/adb/modules/zygisk_detach/detach list");
 	if (detached_list_out === undefined) return;
 	const detached = detached_list_out ? detached_list_out.split('\n') : [];
 	const uninstalled = detached ? [...detached] : [];
@@ -84,10 +84,10 @@ async function main() {
 
 	document.getElementById("detach").addEventListener('click', (e) => {
 		if (detach_list.length == 0) {
-			run("/data/adb/modules/zygisk-detach/detach reset");
+			run("/data/adb/modules/zygisk_detach/detach reset");
 		} else {
 			const detach_arg = detach_list.join(' ');
-			run(`/data/adb/modules/zygisk-detach/detach detachall ${detach_arg}`).then((out) => toast(out));
+			run(`/data/adb/modules/zygisk_detach/detach detachall ${detach_arg}`).then((out) => toast(out));
 		}
 	});
 }

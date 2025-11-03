@@ -18,9 +18,9 @@ mod menus;
 use menus::Menus;
 
 #[cfg(target_os = "android")]
-const MODULE_DETACH: &str = "/data/adb/zygisk-detach/detach.bin";
+const MODULE_DETACH: &str = "/data/adb/zygisk_detach/detach.bin";
 #[cfg(target_os = "android")]
-const DETACH_TXT: &str = "/data/adb/modules/zygisk-detach/detach.txt";
+const DETACH_TXT: &str = "/data/adb/modules/zygisk_detach/detach.txt";
 
 #[cfg(target_os = "linux")]
 const MODULE_DETACH: &str = "detach.bin";
@@ -64,8 +64,8 @@ fn main() -> ExitCode {
         );
     }));
 
-    if !std::path::Path::new("/data/adb/zygisk-detach/").exists() {
-        std::fs::create_dir("/data/adb/zygisk-detach/").expect("zygisk-detach path");
+    if !std::path::Path::new("/data/adb/zygisk_detach/").exists() {
+        std::fs::create_dir("/data/adb/zygisk_detach/").expect("zygisk_detach path");
     }
 
     let mut args = std::env::args().skip(1);

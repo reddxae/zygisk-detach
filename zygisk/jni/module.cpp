@@ -11,7 +11,7 @@
 #include "parcel.hpp"
 #include "zygisk.hpp"
 
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "zygisk-detach", __VA_ARGS__)
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "zygisk_detach", __VA_ARGS__)
 
 static uint8_t* DETACH_TXT;
 static uint8_t HEADERS_LEN;
@@ -161,7 +161,7 @@ class ZygiskDetach : public zygisk::ModuleBase {
 
 static void companion_handler(int remote_fd) {
     off_t size = 0;
-    int fd = open("/data/adb/zygisk-detach/detach.bin", O_RDONLY);
+    int fd = open("/data/adb/zygisk_detach/detach.bin", O_RDONLY);
     if (fd == -1) {
         LOGD("ERROR: companion open");
         if (write(remote_fd, &size, sizeof(size)) < 0)
